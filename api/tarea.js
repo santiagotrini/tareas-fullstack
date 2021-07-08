@@ -13,6 +13,13 @@ router.get('/api/tareas', (req, res) => {
     res.json(tareas);
   });
 });
+// borrar una tarea
+// DELETE /api/tareas/id
+router.delete('/api/tareas/:id', (req, res) => {
+  Tarea.findByIdAndRemove(req.params.id, () => {
+    res.json({ msg: 'tarea borrada' });
+  });
+});
 // crear una tarea
 // POST /api/tareas
 router.post('/api/tareas', (req, res) => {

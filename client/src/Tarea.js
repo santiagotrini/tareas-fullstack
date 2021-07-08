@@ -1,10 +1,24 @@
 // client/src/Tarea.js
+import axios from 'axios';
+
 const Tarea = props => {
-  const { tarea } = props;
+  // props
+  const { tarea, tareas, setTareas } = props;
+  // handlers
+  const handleClick = e => {
+    console.log('no me elimines');
+    console.log(tarea._id);
+    axios.delete('/api/tareas/' + tarea._id)
+      .then(res => {
+        const nuevasTareas = tareas.filter(t => t._id !== tarea._id);
+        setTareas(nuevasTareas);
+      });
+  };
+  // render
   return (
     <li>
       {tarea.text}
-      <button>Eliminar</button>
+      <button onClick={handleClick}>Eliminar</button>
     </li>
   );
 };
