@@ -3,9 +3,11 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const NuevaTarea = props => {
-
+  // props
+  const { tareas, setTareas } = props;
+  // hook de estado
   const [text, setText] = useState('');
-
+  // handler
   const handleSubmit = e => {
     e.preventDefault();
     console.log('submiteando');
@@ -14,9 +16,13 @@ const NuevaTarea = props => {
       text: text
     };
     axios.post('/api/tareas', tarea)
-      .then(res => console.log(res.data));
+      .then(res => {
+        console.log(res.data);
+        setText('');
+        setTareas([...tareas, res.data])
+      });
   };
-
+  // render  
   return (
     <form onSubmit={handleSubmit}>
       <input
