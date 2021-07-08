@@ -3,7 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 // variables de configuracion
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const db = process.env.DB || 'mongodb://localhost/tareas';
 // conectarse a la base de datos
 mongoose.connect(db, {

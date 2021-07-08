@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "node index.js",
+    "client": "npm start --prefix client",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "mongoose": "^5.13.2"
   },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "nodemon": "^2.0.9"
   }
 }
